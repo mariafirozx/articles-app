@@ -1,0 +1,33 @@
+--Users Table
+CREATE TABLE IF NOT EXISTS users (
+    id LONG PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    full_name VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--  Articles Table
+CREATE TABLE IF NOT EXISTS articles (
+    id LONG PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(500) NOT NULL,
+    content TEXT NOT NULL,
+    description VARCHAR(500),
+    user_id LONG NOT NULL,
+    status VARCHAR(20) DEFAULT 'DRAFT',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Comments Table
+CREATE TABLE IF NOT EXISTS comments (
+    id LONG PRIMARY KEY AUTO_INCREMENT,
+    text TEXT NOT NULL,
+    article_id LONG NOT NULL,
+    user_id LONG NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (article_id) REFERENCES articles(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
