@@ -35,7 +35,7 @@ public class Comments {
     
     public Comments(){}
 
-    public Comments(String Text, Articles articles, Users author){
+    public Comments(String text, Articles article, Users author){
         this.text = text;
         this.article = article;
         this.author = author;

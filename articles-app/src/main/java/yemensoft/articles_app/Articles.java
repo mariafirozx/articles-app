@@ -24,7 +24,7 @@ public class Articles {
 
     @ManyToOne 
     @JoinColumn(name = "user_id")
-    private User author;
+    private Users author;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -43,7 +43,7 @@ public class Articles {
 
     public Articles(){}
 
-    public Articles(String title,String content,  String description, User author){
+    public Articles(String title,String content,  String description, Users author){
          this.title = title;
         this.content = content;
         this.description = description;
@@ -64,8 +64,8 @@ public class Articles {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
     
-    public User getAuthor() { return author; }
-    public void setAuthor(User author) { this.author = author; }
+    public Users getAuthor() { return author; }
+    public void setAuthor(Users author) { this.author = author; }
     
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
